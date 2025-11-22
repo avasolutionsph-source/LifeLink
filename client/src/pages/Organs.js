@@ -6,7 +6,6 @@ import {
   FaClock,
   FaHeartbeat,
   FaCircle,
-  FaKidney,
   FaPrescriptionBottleAlt,
   FaInfoCircle,
   FaEye
@@ -74,8 +73,8 @@ const Organs = () => {
   const getOrganIcon = (type) => {
     const iconMap = {
       'Heart': <FaHeartbeat className="text-red-500" />,
-      'Liver': <GiLiver className="text-brown-600" />,
-      'Kidney': <FaKidney className="text-purple-600" />,
+      'Liver': <GiLiver className="text-amber-700" />,
+      'Kidney': <FaCircle className="text-purple-600" />,
       'Lung': <FaLungs className="text-blue-500" />,
       'Pancreas': <FaPrescriptionBottleAlt className="text-orange-500" />,
       'Small Intestine': <GiStomach className="text-yellow-600" />,
