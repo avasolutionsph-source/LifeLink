@@ -168,7 +168,7 @@ const Inventory = () => {
                   <td className="px-4 py-3 text-sm">
                     <div>{new Date(unit.Expiry_Date).toLocaleDateString()}</div>
                     {isExpiringSoon(unit.Expiry_Date) && unit.Status === 'Available' && (
-                      <div className="text-xs text-orange-600 font-medium">⚠️ Expiring Soon</div>
+                      <div className="text-xs text-orange-600 font-medium">Expiring Soon</div>
                     )}
                   </td>
                   <td className="px-4 py-3">

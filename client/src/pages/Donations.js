@@ -44,7 +44,7 @@ const Donations = () => {
 
     try {
       // In demo mode, just show success
-      alert('✅ Donation recorded successfully! (Demo Mode)');
+      alert('Donation recorded successfully! (Demo Mode)');
 
       setShowForm(false);
       setFormData({

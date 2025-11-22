@@ -67,7 +67,7 @@ const Donors = () => {
       };
 
       setDonors([newDonor, ...donors]);
-      alert('✅ Donor registered successfully! (Demo Mode)');
+      alert('Donor registered successfully! (Demo Mode)');
 
       setShowForm(false);
       setFormData({

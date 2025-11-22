@@ -1,6 +1,16 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import {
+  FaHeartbeat,
+  FaUsers,
+  FaLungs,
+  FaDna,
+  FaClock,
+  FaClipboardList,
+  FaChartLine
+} from 'react-icons/fa';
+import { MdLocalHospital, MdBloodtype, MdDashboard } from 'react-icons/md';
 
 const Layout = ({ children }) => {
   const { isAuthenticated, admin, logout } = useAuth();
@@ -13,15 +23,15 @@ const Layout = ({ children }) => {
   };
 
   const navItems = [
-    { path: '/', label: 'Dashboard', icon: '📊' },
-    { path: '/donors', label: 'Donors', icon: '👥' },
-    { path: '/blood', label: 'Blood', icon: '🩸' },
-    { path: '/organs', label: 'Organs', icon: '🫁' },
-    { path: '/tissues', label: 'Tissues', icon: '🧬' },
-    { path: '/recipients', label: 'Recipients', icon: '⏱️' },
-    { path: '/requests', label: 'Requests', icon: '📝' },
-    { path: '/hospitals', label: 'Hospitals', icon: '🏥' },
-    { path: '/reports', label: 'Reports', icon: '📈' },
+    { path: '/', label: 'Dashboard', icon: <MdDashboard /> },
+    { path: '/donors', label: 'Donors', icon: <FaUsers /> },
+    { path: '/blood', label: 'Blood', icon: <MdBloodtype /> },
+    { path: '/organs', label: 'Organs', icon: <FaLungs /> },
+    { path: '/tissues', label: 'Tissues', icon: <FaDna /> },
+    { path: '/recipients', label: 'Recipients', icon: <FaClock /> },
+    { path: '/requests', label: 'Requests', icon: <FaClipboardList /> },
+    { path: '/hospitals', label: 'Hospitals', icon: <MdLocalHospital /> },
+    { path: '/reports', label: 'Reports', icon: <FaChartLine /> },
   ];
 
   return (
@@ -31,7 +41,9 @@ const Layout = ({ children }) => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div className="text-4xl animate-float">🫀</div>
+              <div className="text-4xl animate-float text-life-red-500">
+                <FaHeartbeat />
+              </div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-life-red-600 via-life-blue-600 to-life-green-600 bg-clip-text text-transparent">
                   LifeLink

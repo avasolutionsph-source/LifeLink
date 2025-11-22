@@ -49,7 +49,7 @@ const Requests = () => {
 
     try {
       // In demo mode, just show success
-      alert('✅ Blood request submitted successfully! (Demo Mode)');
+      alert('Blood request submitted successfully! (Demo Mode)');
 
       setShowForm(false);
       setFormData({
@@ -77,7 +77,7 @@ const Requests = () => {
       );
       setRequests(updatedRequests);
 
-      alert(`✅ Request ${newStatus.toLowerCase()} successfully! (Demo Mode)`);
+      alert(`Request ${newStatus.toLowerCase()} successfully! (Demo Mode)`);
     } catch (error) {
       console.error('Error updating status:', error);
       alert('Failed to update request status');
