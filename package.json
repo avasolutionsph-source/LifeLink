@@ -1,0 +1,18 @@
+{
+  "name": "bloodsync-demo",
+  "version": "1.0.0",
+  "description": "BloodSync Blood Donation Management System - Demo Version",
+  "main": "server.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && nodemon server.js",
+    "client": "cd client && npm start",
+    "install-all": "npm install && cd backend && npm install && cd ../client && npm install"
+  },
+  "keywords": ["blood-donation", "healthcare", "management-system"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

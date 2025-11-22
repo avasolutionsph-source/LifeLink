@@ -1,0 +1,174 @@
+========================================
+BLOODSYNC - FRONTEND DEMO MODE
+========================================
+
+✅ STATUS: READY TO USE!
+
+The BloodSync application is now running in FRONTEND-ONLY DEMO MODE.
+No database or backend server required!
+
+========================================
+HOW TO ACCESS
+========================================
+
+1. Open your browser to: http://localhost:3000
+
+2. Login with:
+   Username: admin
+   Password: admin123
+
+3. You're in!
+
+========================================
+WHAT'S INCLUDED (MOCK DATA)
+========================================
+
+✓ 10 Donors (various blood types)
+✓ 5 Real Naga City Hospitals:
+  - Bicol Medical Center
+  - Mother Seton Hospital
+  - St. John Hospital
+  - Naga City Hospital
+  - NICC Doctors Hospital
+
+✓ 10 Blood Inventory Units
+✓ 3 Donation Records
+✓ 4 Blood Requests (mix of statuses)
+
+========================================
+FEATURES THAT WORK
+========================================
+
+✅ Login/Logout
+✅ Dashboard with Statistics
+✅ View Donors List
+✅ Register New Donor (adds to local state)
+✅ View Blood Inventory
+✅ Filter by Blood Type/Hospital/Status
+✅ View Donations
+✅ View Blood Requests
+✅ Approve/Reject Requests (updates local state)
+✅ View All 5 Hospitals
+✅ Hospital Statistics
+✅ Reports & Analytics
+
+========================================
+HOW IT WORKS
+========================================
+
+- All data is stored in React state (mockData.js)
+- No backend API calls
+- No database needed
+- Changes persist only during the session
+- Refresh = data resets to default
+
+========================================
+DEMO ACTIONS YOU CAN TRY
+========================================
+
+1. View Dashboard
+   - See statistics
+   - View blood type inventory grid
+
+2. Register a Donor
+   - Go to Donors page
+   - Click "+ Register New Donor"
+   - Fill the form
+   - Submit
+   - See new donor in the list
+
+3. View Inventory
+   - Go to Inventory page
+   - Filter by blood type (e.g., O+)
+   - Filter by hospital
+   - See expiring units highlighted
+
+4. View Requests
+   - Go to Requests page
+   - See pending requests
+   - Click "Approve" on pending request
+   - Status changes to Approved
+   - Click "Complete"
+   - Status changes to Completed
+
+5. View Hospitals
+   - Click on any hospital
+   - See hospital-specific stats
+   - View inventory per hospital
+
+6. View Reports
+   - See donation statistics
+   - View inventory summary
+   - Analyze request patterns
+
+========================================
+REAL NAGA CITY HOSPITALS
+========================================
+
+All hospitals in the system are REAL:
+
+1. Bicol Medical Center
+   Address: Concepcion Pequeña, Naga City
+   Contact: (054) 472-2400
+
+2. Mother Seton Hospital
+   Address: Brgy. Del Rosario, Naga City
+   Contact: (054) 472-6173
+
+3. St. John Hospital
+   Address: P. Burgos St., Naga City
+   Contact: (054) 811-3000
+
+4. Naga City Hospital
+   Address: Penafrancia Ave., Naga City
+   Contact: (054) 473-9110
+
+5. NICC Doctors Hospital
+   Address: Roxas Ave., Naga City
+   Contact: (054) 473-8093
+
+========================================
+LIMITATIONS (DEMO MODE)
+========================================
+
+⚠ Data resets on page refresh
+⚠ No persistent storage
+⚠ No actual backend
+⚠ Some features show alerts instead of real actions
+⚠ Not suitable for production use
+
+========================================
+PERFECT FOR:
+========================================
+
+✓ Classroom presentations
+✓ Project demonstrations
+✓ UI/UX showcase
+✓ Concept validation
+✓ Quick prototypes
+
+========================================
+TO STOP THE APP
+========================================
+
+Press Ctrl+C in the terminal where React is running
+
+========================================
+NEED FULL VERSION?
+========================================
+
+For a production-ready version with backend:
+1. Set up MySQL database
+2. Run database/schema.sql
+3. Run database/mock_data.sql
+4. Configure backend/.env
+5. Start backend: cd backend && npm start
+6. Backend runs on port 5000
+
+See README.md for full setup instructions.
+
+========================================
+
+🩸 Enjoy the BloodSync Demo!
+
+========================================

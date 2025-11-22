@@ -1,0 +1,99 @@
+========================================
+BLOODSYNC - SETUP STEPS REMAINING
+========================================
+
+CURRENT STATUS:
+---------------
+✅ Frontend installed and running on http://localhost:3000
+✅ Backend dependencies installed
+❌ Database NOT created yet
+❌ Backend NOT running yet
+
+YOU NEED TO DO THESE 3 STEPS:
+==============================
+
+STEP 1: Create Database
+-----------------------
+Open MySQL (MySQL Workbench or command line):
+
+mysql -u root -p
+
+Then run:
+CREATE DATABASE bloodsync_db;
+exit;
+
+
+STEP 2: Load Database Tables and Data
+--------------------------------------
+From the HOSPITAL directory, run:
+
+mysql -u root -p bloodsync_db < database/schema.sql
+mysql -u root -p bloodsync_db < database/mock_data.sql
+
+(It will ask for your MySQL password each time)
+
+
+STEP 3: Add MySQL Password to Backend
+--------------------------------------
+Edit this file:
+backend\.env
+
+Change this line:
+DB_PASSWORD=
+
+To:
+DB_PASSWORD=your_actual_mysql_password
+
+Save the file.
+
+
+STEP 4: Start Backend Server
+-----------------------------
+Open a NEW terminal/command prompt in the HOSPITAL directory
+
+cd backend
+npm start
+
+You should see: "🩸 BloodSync API server running on port 5000"
+
+
+STEP 5: Reload Frontend
+------------------------
+Go back to http://localhost:3000 in your browser
+It should now show the login page!
+
+Login with:
+Username: admin
+Password: admin123
+
+
+TROUBLESHOOTING:
+===============
+
+Q: MySQL command not found?
+A: Make sure MySQL is installed and added to PATH
+
+Q: Database already exists?
+A: That's fine! Just run the schema.sql and mock_data.sql files
+
+Q: Backend won't start?
+A: Check that:
+   - MySQL is running
+   - Database bloodsync_db exists
+   - Password in backend\.env is correct
+   - Port 5000 is not in use
+
+Q: Frontend shows "cannot connect"?
+A: Backend needs to be running on port 5000
+
+========================================
+
+QUICK SUMMARY:
+1. Create database in MySQL
+2. Import schema.sql and mock_data.sql
+3. Edit backend\.env with your MySQL password
+4. Start backend: cd backend && npm start
+5. Refresh browser at localhost:3000
+6. Login: admin / admin123
+
+========================================

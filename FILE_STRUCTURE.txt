@@ -1,0 +1,358 @@
+BLOODSYNC - COMPLETE FILE STRUCTURE
+====================================
+
+HOSPITAL/
+│
+├── 📄 README.md                          # Main documentation
+├── 📄 SETUP_GUIDE.md                     # Installation guide
+├── 📄 PROJECT_SUMMARY.md                 # Project overview
+├── 📄 DEMO_CREDENTIALS.txt               # Login credentials
+├── 📄 FILE_STRUCTURE.txt                 # This file
+├── 📄 package.json                       # Root package config
+├── 📄 .gitignore                         # Git ignore rules
+│
+├── 📁 backend/                           # Backend API (Node.js + Express)
+│   │
+│   ├── 📄 server.js                      # Express server entry point
+│   ├── 📄 package.json                   # Backend dependencies
+│   ├── 📄 .env.example                   # Environment template
+│   │
+│   ├── 📁 config/
+│   │   └── 📄 database.js                # MySQL connection config
+│   │
+│   ├── 📁 middleware/
+│   │   └── 📄 auth.js                    # JWT authentication middleware
+│   │
+│   └── 📁 routes/
+│       ├── 📄 auth.js                    # Authentication routes (login, verify)
+│       ├── 📄 donors.js                  # Donor CRUD operations
+│       ├── 📄 hospitals.js               # Hospital operations
+│       ├── 📄 inventory.js               # Blood inventory management
+│       ├── 📄 donations.js               # Donation records
+│       └── 📄 requests.js                # Blood request management
+│
+├── 📁 client/                            # Frontend (React + TailwindCSS)
+│   │
+│   ├── 📄 package.json                   # Frontend dependencies
+│   ├── 📄 tailwind.config.js             # TailwindCSS configuration
+│   ├── 📄 postcss.config.js              # PostCSS configuration
+│   ├── 📄 .env.example                   # Frontend environment template
+│   │
+│   ├── 📁 public/
+│   │   └── 📄 index.html                 # HTML template
+│   │
+│   └── 📁 src/
+│       │
+│       ├── 📄 index.js                   # React entry point
+│       ├── 📄 index.css                  # Global styles + TailwindCSS
+│       ├── 📄 App.js                     # Main app component + routing
+│       │
+│       ├── 📁 config/
+│       │   └── 📄 api.js                 # Axios configuration + interceptors
+│       │
+│       ├── 📁 context/
+│       │   └── 📄 AuthContext.js         # Authentication context provider
+│       │
+│       ├── 📁 components/
+│       │   ├── 📄 Layout.js              # Main layout wrapper (header, nav, footer)
+│       │   └── 📄 ProtectedRoute.js      # Route protection component
+│       │
+│       └── 📁 pages/
+│           ├── 📄 Login.js               # Login page
+│           ├── 📄 Dashboard.js           # Main dashboard with statistics
+│           ├── 📄 Donors.js              # Donor registration & management
+│           ├── 📄 Inventory.js           # Blood inventory tracking
+│           ├── 📄 Donations.js           # Donation records management
+│           ├── 📄 Requests.js            # Blood request form & management
+│           ├── 📄 Hospitals.js           # Hospital network view
+│           └── 📄 Reports.js             # Analytics & reporting
+│
+└── 📁 database/                          # Database files
+    ├── 📄 schema.sql                     # Database structure (tables, indexes)
+    └── 📄 mock_data.sql                  # Demo data (15 donors, 5 hospitals, etc.)
+
+
+DETAILED FILE BREAKDOWN
+========================
+
+BACKEND FILES (9 files)
+-----------------------
+✓ server.js              - Express app setup, middleware, routes
+✓ config/database.js     - MySQL connection pool
+✓ middleware/auth.js     - JWT verification middleware
+✓ routes/auth.js         - POST /login, GET /verify
+✓ routes/donors.js       - CRUD for donors + statistics
+✓ routes/hospitals.js    - Hospital CRUD + statistics
+✓ routes/inventory.js    - Inventory CRUD + filters + summary
+✓ routes/donations.js    - Donation records + auto inventory update
+✓ routes/requests.js     - Request workflow (pending/approved/completed)
+
+FRONTEND FILES (15 files)
+-------------------------
+✓ index.js               - ReactDOM render
+✓ App.js                 - Router setup + route definitions
+✓ index.css              - TailwindCSS imports + custom classes
+✓ config/api.js          - Axios instance + auth interceptor
+✓ context/AuthContext.js - Login/logout/auth state management
+✓ components/Layout.js   - Navigation, header, footer wrapper
+✓ components/ProtectedRoute.js - Redirect if not authenticated
+✓ pages/Login.js         - Login form with demo credentials
+✓ pages/Dashboard.js     - Stats cards + blood type grid
+✓ pages/Donors.js        - Registration form + donor table
+✓ pages/Inventory.js     - Inventory table with filters
+✓ pages/Donations.js     - Donation form + history table
+✓ pages/Requests.js      - Request form + approval workflow
+✓ pages/Hospitals.js     - Hospital list + detail view
+✓ pages/Reports.js       - Analytics with date filters
+
+DATABASE FILES (2 files)
+------------------------
+✓ schema.sql             - 6 tables: Admins, Hospitals, Donors,
+                           Blood_Inventory, Donation_Records,
+                           Blood_Requests
+✓ mock_data.sql          - 70+ records across all tables
+
+DOCUMENTATION (5 files)
+-----------------------
+✓ README.md              - Complete project documentation (300+ lines)
+✓ SETUP_GUIDE.md         - Step-by-step installation (200+ lines)
+✓ PROJECT_SUMMARY.md     - Project overview & features (400+ lines)
+✓ DEMO_CREDENTIALS.txt   - Quick reference credentials
+✓ FILE_STRUCTURE.txt     - This file
+
+
+CONFIGURATION FILES (6 files)
+-----------------------------
+✓ package.json (root)    - Concurrent script to run both servers
+✓ .gitignore             - Git ignore patterns
+✓ backend/package.json   - Backend dependencies (express, mysql2, jwt)
+✓ backend/.env.example   - Backend environment template
+✓ client/package.json    - Frontend dependencies (react, tailwind)
+✓ client/.env.example    - Frontend environment template
+✓ client/tailwind.config.js - TailwindCSS custom theme
+✓ client/postcss.config.js  - PostCSS configuration
+
+
+KEY FEATURES BY FILE
+====================
+
+Dashboard.js
+------------
+- Total donors count
+- Available blood units
+- Pending requests count
+- Total donations
+- Blood type grid (8 types)
+- Quick action cards
+
+Donors.js
+---------
+- Registration form (9 fields)
+- Search functionality
+- Blood type filter
+- Donor table with eligibility status
+- Email & contact display
+
+Inventory.js
+------------
+- Filter by blood type
+- Filter by hospital
+- Filter by status
+- Expiry date alerts (30 days)
+- Color-coded status badges
+- Hospital name display
+
+Donations.js
+------------
+- Donation recording form
+- Auto blood type from donor
+- Links to donor & hospital
+- Donation history table
+- Health status tracking
+
+Requests.js
+-----------
+- Request submission form
+- Urgency levels (4 types)
+- Status workflow (4 stages)
+- Approve/Reject buttons
+- Complete button
+- Auto inventory update
+
+Hospitals.js
+------------
+- 5 Naga City hospitals
+- Hospital statistics
+- Inventory by hospital
+- Total donations count
+- Request breakdown
+- Interactive cards
+
+Reports.js
+----------
+- Date range filtering
+- Donations by blood type
+- Donations by hospital
+- Inventory summary
+- Request status breakdown
+- Urgency analysis
+- Units expiring soon alert
+
+
+API ENDPOINTS (30+)
+==================
+
+Authentication:
+---------------
+POST   /api/auth/login
+GET    /api/auth/verify
+
+Donors:
+-------
+GET    /api/donors
+GET    /api/donors/:id
+POST   /api/donors
+PUT    /api/donors/:id
+DELETE /api/donors/:id
+GET    /api/donors/stats/overview
+
+Hospitals:
+----------
+GET    /api/hospitals
+GET    /api/hospitals/:id
+GET    /api/hospitals/:id/stats
+
+Inventory:
+----------
+GET    /api/inventory
+GET    /api/inventory/summary
+POST   /api/inventory
+PUT    /api/inventory/:id
+DELETE /api/inventory/:id
+
+Donations:
+----------
+GET    /api/donations
+GET    /api/donations/:id
+POST   /api/donations
+GET    /api/donations/stats/overview
+
+Requests:
+---------
+GET    /api/requests
+GET    /api/requests/:id
+POST   /api/requests
+PUT    /api/requests/:id/status
+DELETE /api/requests/:id
+GET    /api/requests/stats/overview
+
+
+DATABASE SCHEMA
+===============
+
+Tables: 6
+---------
+1. Admins
+   - Admin_ID, Username, Password, Full_Name, Email
+
+2. Hospitals
+   - Hospital_ID, Hospital_Name, Address, Contact, Email
+
+3. Donors
+   - Donor_ID, First_Name, Last_Name, Blood_Type, DOB, Gender
+   - Contact_Number, Email, Address, Medical_History
+   - Last_Donation_Date, Eligibility_Status
+
+4. Blood_Inventory
+   - Unit_ID, Blood_Type, Quantity, Collection_Date, Expiry_Date
+   - Status, Hospital_ID
+
+5. Donation_Records
+   - Donation_ID, Donor_ID, Hospital_ID, Donation_Date
+   - Blood_Type, Units_Donated, Health_Status, Notes
+
+6. Blood_Requests
+   - Request_ID, Hospital_ID, Blood_Type, Units_Requested
+   - Urgency_Level, Request_Date, Required_By_Date
+   - Status, Approved_By, Approval_Date, Completion_Date, Notes
+
+
+TECHNOLOGY STACK
+================
+
+Backend:
+--------
+✓ Node.js v16+
+✓ Express.js 4.18
+✓ MySQL 8.0
+✓ JWT (jsonwebtoken)
+✓ bcryptjs
+✓ CORS
+✓ dotenv
+
+Frontend:
+---------
+✓ React 18
+✓ React Router 6
+✓ TailwindCSS 3
+✓ Axios
+✓ Context API
+
+Database:
+---------
+✓ MySQL 8.0
+✓ Relational design
+✓ Foreign keys
+✓ Indexes
+✓ Constraints
+
+
+PROJECT STATISTICS
+==================
+
+Total Files:         40+
+Lines of Code:       5,000+
+React Components:    15
+API Routes:          30+
+Database Tables:     6
+Mock Data Records:   70+
+Documentation Pages: 4
+Blood Types:         8
+Hospitals:           5
+Demo Donors:         15
+
+
+RUNNING THE PROJECT
+===================
+
+Option 1: Manual Start
+----------------------
+Terminal 1 (Backend):
+  cd backend
+  npm install
+  npm start
+
+Terminal 2 (Frontend):
+  cd client
+  npm install
+  npm start
+
+Option 2: Concurrent Start
+---------------------------
+Root directory:
+  npm install
+  npm run dev
+
+Access:
+-------
+Frontend: http://localhost:3000
+Backend:  http://localhost:5000/api
+
+Login:
+------
+Username: admin
+Password: admin123
+
+
+END OF FILE STRUCTURE
+=====================
