@@ -1,6 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { getLifeLinkStats } from '../data/lifelinkMockData';
 import { Link } from 'react-router-dom';
+import {
+  FaHeartbeat,
+  FaLungs,
+  FaDna,
+  FaUsers,
+  FaClock,
+  FaClipboardList,
+  FaFileAlt,
+  FaExclamationTriangle,
+  FaBell,
+  FaCheckCircle,
+  FaHourglassHalf
+} from 'react-icons/fa';
+import { MdBloodtype, MdLocalHospital } from 'react-icons/md';
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
@@ -67,11 +81,17 @@ const Dashboard = () => {
                 {stats.blood.totalUnits}
               </p>
               <div className="flex gap-3 mt-3">
-                <p className="text-xs text-orange-600 font-semibold">⚠ {stats.blood.expiringSoon} expiring</p>
-                <p className="text-xs text-red-600 font-semibold">🚨 {stats.blood.lowStock} low stock</p>
+                <p className="text-xs text-orange-600 font-semibold flex items-center gap-1">
+                  <FaExclamationTriangle /> {stats.blood.expiringSoon} expiring
+                </p>
+                <p className="text-xs text-red-600 font-semibold flex items-center gap-1">
+                  <FaBell /> {stats.blood.lowStock} low stock
+                </p>
               </div>
             </div>
-            <div className="text-5xl opacity-80 animate-float">🩸</div>
+            <div className="text-5xl opacity-80 animate-float text-life-red-500">
+              <MdBloodtype />
+            </div>
           </div>
         </Link>
 
@@ -83,11 +103,17 @@ const Dashboard = () => {
                 {stats.organs.available}
               </p>
               <div className="flex gap-3 mt-3">
-                <p className="text-xs text-green-600 font-semibold">✓ {stats.organs.matched} matched</p>
-                <p className="text-xs text-red-600 font-semibold">⏰ {stats.organs.critical} critical time</p>
+                <p className="text-xs text-green-600 font-semibold flex items-center gap-1">
+                  <FaCheckCircle /> {stats.organs.matched} matched
+                </p>
+                <p className="text-xs text-red-600 font-semibold flex items-center gap-1">
+                  <FaHourglassHalf /> {stats.organs.critical} critical time
+                </p>
               </div>
             </div>
-            <div className="text-5xl opacity-80 animate-float" style={{animationDelay: '0.5s'}}>🫁</div>
+            <div className="text-5xl opacity-80 animate-float text-life-blue-500" style={{animationDelay: '0.5s'}}>
+              <FaLungs />
+            </div>
           </div>
         </Link>
 
@@ -99,11 +125,17 @@ const Dashboard = () => {
                 {stats.tissues.available}
               </p>
               <div className="flex gap-3 mt-3">
-                <p className="text-xs text-blue-600 font-semibold">⭐ {stats.tissues.excellentGrade} excellent</p>
-                <p className="text-xs text-orange-600 font-semibold">📅 {stats.tissues.expiringSoon} expiring</p>
+                <p className="text-xs text-blue-600 font-semibold flex items-center gap-1">
+                  <FaCheckCircle /> {stats.tissues.excellentGrade} excellent
+                </p>
+                <p className="text-xs text-orange-600 font-semibold flex items-center gap-1">
+                  <FaClock /> {stats.tissues.expiringSoon} expiring
+                </p>
               </div>
             </div>
-            <div className="text-5xl opacity-80 animate-float" style={{animationDelay: '1s'}}>🧬</div>
+            <div className="text-5xl opacity-80 animate-float text-life-green-500" style={{animationDelay: '1s'}}>
+              <FaDna />
+            </div>
           </div>
         </Link>
       </div>
@@ -115,9 +147,13 @@ const Dashboard = () => {
             <div>
               <p className="text-gray-600 text-sm font-semibold uppercase tracking-wide">Total Donors</p>
               <p className="text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mt-2">{stats.donors.total}</p>
-              <p className="text-sm text-green-600 font-semibold mt-2">✓ {stats.donors.eligible} eligible</p>
+              <p className="text-sm text-green-600 font-semibold mt-2 flex items-center gap-1">
+                <FaCheckCircle /> {stats.donors.eligible} eligible
+              </p>
             </div>
-            <div className="text-5xl opacity-80 animate-float" style={{animationDelay: '1.5s'}}>👥</div>
+            <div className="text-5xl opacity-80 animate-float text-gray-700" style={{animationDelay: '1.5s'}}>
+              <FaUsers />
+            </div>
           </div>
         </Link>
 
@@ -126,9 +162,13 @@ const Dashboard = () => {
             <div>
               <p className="text-gray-600 text-sm font-semibold uppercase tracking-wide">Recipients</p>
               <p className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent mt-2">{stats.recipients.active}</p>
-              <p className="text-sm text-red-600 font-semibold mt-2">🚨 {stats.recipients.critical} critical</p>
+              <p className="text-sm text-red-600 font-semibold mt-2 flex items-center gap-1">
+                <FaBell /> {stats.recipients.critical} critical
+              </p>
             </div>
-            <div className="text-5xl opacity-80 animate-float" style={{animationDelay: '2s'}}>⏱️</div>
+            <div className="text-5xl opacity-80 animate-float text-purple-500" style={{animationDelay: '2s'}}>
+              <FaClock />
+            </div>
           </div>
         </Link>
 
@@ -139,7 +179,9 @@ const Dashboard = () => {
               <p className="text-4xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-500 bg-clip-text text-transparent mt-2">{stats.requests.pending}</p>
               <p className="text-sm text-gray-600 font-semibold mt-2">Awaiting approval</p>
             </div>
-            <div className="text-5xl opacity-80 animate-float" style={{animationDelay: '2.5s'}}>📝</div>
+            <div className="text-5xl opacity-80 animate-float text-yellow-500" style={{animationDelay: '2.5s'}}>
+              <FaClipboardList />
+            </div>
           </div>
         </Link>
 
@@ -150,7 +192,9 @@ const Dashboard = () => {
               <p className="text-4xl font-bold bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent mt-2">{stats.donations.total}</p>
               <p className="text-sm text-gray-600 font-semibold mt-2">{stats.donations.thisMonth} this month</p>
             </div>
-            <div className="text-5xl opacity-80 animate-float" style={{animationDelay: '3s'}}>📋</div>
+            <div className="text-5xl opacity-80 animate-float text-green-500" style={{animationDelay: '3s'}}>
+              <FaFileAlt />
+            </div>
           </div>
         </Link>
       </div>
@@ -194,7 +238,9 @@ const Dashboard = () => {
             to="/donors"
             className="group p-5 rounded-2xl bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-sm border-2 border-gray-200/50 hover:border-life-red-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">👥</div>
+            <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300 text-gray-700">
+              <FaUsers />
+            </div>
             <h3 className="font-bold text-gray-800 text-sm">Register Donor</h3>
             <p className="text-xs text-gray-600 mt-1 font-medium">Add new donor</p>
           </Link>
@@ -203,7 +249,9 @@ const Dashboard = () => {
             to="/blood"
             className="group p-5 rounded-2xl bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-sm border-2 border-gray-200/50 hover:border-life-red-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">🩸</div>
+            <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300 text-life-red-500">
+              <MdBloodtype />
+            </div>
             <h3 className="font-bold text-gray-800 text-sm">Blood Inventory</h3>
             <p className="text-xs text-gray-600 mt-1 font-medium">Manage blood units</p>
           </Link>
@@ -212,7 +260,9 @@ const Dashboard = () => {
             to="/organs"
             className="group p-5 rounded-2xl bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-sm border-2 border-gray-200/50 hover:border-life-blue-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">🫁</div>
+            <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300 text-life-blue-500">
+              <FaLungs />
+            </div>
             <h3 className="font-bold text-gray-800 text-sm">Organ Registry</h3>
             <p className="text-xs text-gray-600 mt-1 font-medium">View organs</p>
           </Link>
@@ -221,7 +271,9 @@ const Dashboard = () => {
             to="/tissues"
             className="group p-5 rounded-2xl bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-sm border-2 border-gray-200/50 hover:border-life-green-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">🧬</div>
+            <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300 text-life-green-500">
+              <FaDna />
+            </div>
             <h3 className="font-bold text-gray-800 text-sm">Tissue Bank</h3>
             <p className="text-xs text-gray-600 mt-1 font-medium">Browse tissues</p>
           </Link>
@@ -230,7 +282,9 @@ const Dashboard = () => {
             to="/recipients"
             className="group p-5 rounded-2xl bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-sm border-2 border-gray-200/50 hover:border-purple-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">⏱️</div>
+            <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300 text-purple-500">
+              <FaClock />
+            </div>
             <h3 className="font-bold text-gray-800 text-sm">Waitlist</h3>
             <p className="text-xs text-gray-600 mt-1 font-medium">View recipients</p>
           </Link>
@@ -239,7 +293,9 @@ const Dashboard = () => {
             to="/requests"
             className="group p-5 rounded-2xl bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-sm border-2 border-gray-200/50 hover:border-yellow-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">📝</div>
+            <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300 text-yellow-500">
+              <FaClipboardList />
+            </div>
             <h3 className="font-bold text-gray-800 text-sm">New Request</h3>
             <p className="text-xs text-gray-600 mt-1 font-medium">Submit request</p>
           </Link>
@@ -249,7 +305,9 @@ const Dashboard = () => {
       {/* System Info */}
       <div className="glass-card p-6 bg-gradient-to-br from-life-blue-50/30 to-life-green-50/30">
         <div className="flex items-start space-x-3">
-          <div className="text-2xl">🫀</div>
+          <div className="text-3xl text-life-red-600">
+            <FaHeartbeat />
+          </div>
           <div>
             <h3 className="font-bold text-gray-800 mb-2">LifeLink Network Status</h3>
             <div className="space-y-1 text-sm text-gray-700">
