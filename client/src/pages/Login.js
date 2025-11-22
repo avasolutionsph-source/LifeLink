@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { FaHeartbeat, FaLungs, FaDna } from 'react-icons/fa';
+import { MdBloodtype } from 'react-icons/md';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -37,20 +39,28 @@ const Login = () => {
       {/* Login card */}
       <div className="relative z-10 glass-card p-10 w-full max-w-md animate-slide-in">
         <div className="text-center mb-8">
-          <div className="text-7xl mb-4 animate-float">🫀</div>
+          <div className="text-7xl mb-4 animate-float text-life-red-500">
+            <FaHeartbeat />
+          </div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-life-red-600 via-life-blue-600 to-life-green-600 bg-clip-text text-transparent mb-2">
             LifeLink
           </h1>
           <p className="text-gray-600 font-medium">Connecting life-saving gifts to those who need them most</p>
           <div className="mt-4 flex gap-2 justify-center">
             <div className="inline-block px-3 py-1 bg-life-red-100/50 backdrop-blur-sm rounded-full">
-              <p className="text-xs font-semibold text-life-red-700">🩸 Blood</p>
+              <p className="text-xs font-semibold text-life-red-700 flex items-center gap-1">
+                <MdBloodtype /> Blood
+              </p>
             </div>
             <div className="inline-block px-3 py-1 bg-life-blue-100/50 backdrop-blur-sm rounded-full">
-              <p className="text-xs font-semibold text-life-blue-700">🫁 Organs</p>
+              <p className="text-xs font-semibold text-life-blue-700 flex items-center gap-1">
+                <FaLungs /> Organs
+              </p>
             </div>
             <div className="inline-block px-3 py-1 bg-life-green-100/50 backdrop-blur-sm rounded-full">
-              <p className="text-xs font-semibold text-life-green-700">🧬 Tissues</p>
+              <p className="text-xs font-semibold text-life-green-700 flex items-center gap-1">
+                <FaDna /> Tissues
+              </p>
             </div>
           </div>
         </div>

@@ -1,5 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { mockOrgans, mockHospitals } from '../data/lifelinkMockData';
+import {
+  FaLungs,
+  FaCheckCircle,
+  FaClock,
+  FaHeartbeat,
+  FaCircle,
+  FaKidney,
+  FaPrescriptionBottleAlt,
+  FaInfoCircle,
+  FaEye
+} from 'react-icons/fa';
+import { GiLiver, GiStomach } from 'react-icons/gi';
 
 const Organs = () => {
   const [organs, setOrgans] = useState([]);
@@ -60,16 +72,16 @@ const Organs = () => {
   };
 
   const getOrganIcon = (type) => {
-    const icons = {
-      'Heart': '❤️',
-      'Liver': '🫀',
-      'Kidney': '🫘',
-      'Lung': '🫁',
-      'Pancreas': '🥩',
-      'Small Intestine': '🌀',
-      'Cornea': '👁️'
+    const iconMap = {
+      'Heart': <FaHeartbeat className="text-red-500" />,
+      'Liver': <GiLiver className="text-brown-600" />,
+      'Kidney': <FaKidney className="text-purple-600" />,
+      'Lung': <FaLungs className="text-blue-500" />,
+      'Pancreas': <FaPrescriptionBottleAlt className="text-orange-500" />,
+      'Small Intestine': <GiStomach className="text-yellow-600" />,
+      'Cornea': <FaEye className="text-blue-400" />
     };
-    return icons[type] || '🫀';
+    return iconMap[type] || <FaCircle className="text-gray-500" />;
   };
 
   const getViabilityStatus = (viableUntil) => {
@@ -120,7 +132,9 @@ const Organs = () => {
               </p>
               <p className="text-sm text-gray-600 font-semibold mt-2">Ready for matching</p>
             </div>
-            <div className="text-5xl opacity-80 animate-float">🫁</div>
+            <div className="text-5xl opacity-80 animate-float text-life-blue-500">
+              <FaLungs />
+            </div>
           </div>
         </div>
 
@@ -133,7 +147,9 @@ const Organs = () => {
               </p>
               <p className="text-sm text-gray-600 font-semibold mt-2">Awaiting transplant</p>
             </div>
-            <div className="text-5xl opacity-80 animate-float" style={{animationDelay: '0.5s'}}>✅</div>
+            <div className="text-5xl opacity-80 animate-float text-green-500" style={{animationDelay: '0.5s'}}>
+              <FaCheckCircle />
+            </div>
           </div>
         </div>
 
@@ -146,7 +162,9 @@ const Organs = () => {
               </p>
               <p className="text-sm text-gray-600 font-semibold mt-2">Less than 6 hours</p>
             </div>
-            <div className="text-5xl opacity-80 animate-float" style={{animationDelay: '1s'}}>⏰</div>
+            <div className="text-5xl opacity-80 animate-float text-red-500" style={{animationDelay: '1s'}}>
+              <FaClock />
+            </div>
           </div>
         </div>
       </div>
@@ -166,7 +184,7 @@ const Organs = () => {
             >
               <option value="">All Organ Types</option>
               {organTypes.map(type => (
-                <option key={type} value={type}>{getOrganIcon(type)} {type}</option>
+                <option key={type} value={type}>{type}</option>
               ))}
             </select>
           </div>
@@ -228,7 +246,7 @@ const Organs = () => {
                     <td className="px-4 py-3 text-sm font-semibold">{organ.Organ_ID}</td>
                     <td className="px-4 py-3">
                       <div className="flex items-center space-x-2">
-                        <span className="text-2xl">{getOrganIcon(organ.Organ_Type)}</span>
+                        <span className="text-xl">{getOrganIcon(organ.Organ_Type)}</span>
                         <span className="font-semibold text-gray-900">{organ.Organ_Type}</span>
                       </div>
                     </td>
@@ -277,7 +295,9 @@ const Organs = () => {
       {/* Quality Assessment Note */}
       <div className="glass-card p-6 bg-life-blue-50/30">
         <div className="flex items-start space-x-3">
-          <div className="text-2xl">ℹ️</div>
+          <div className="text-2xl text-life-blue-600">
+            <FaInfoCircle />
+          </div>
           <div>
             <h3 className="font-bold text-gray-800 mb-2">HLA Compatibility & Matching</h3>
             <p className="text-sm text-gray-700">

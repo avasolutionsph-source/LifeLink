@@ -1,5 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { mockTissues, mockHospitals } from '../data/lifelinkMockData';
+import {
+  FaDna,
+  FaExclamationTriangle,
+  FaStar,
+  FaEye,
+  FaHandHoldingMedical,
+  FaBone,
+  FaHeartbeat,
+  FaCircle,
+  FaDumbbell,
+  FaRunning,
+  FaSnowflake
+} from 'react-icons/fa';
 
 const Tissues = () => {
   const [tissues, setTissues] = useState([]);
@@ -76,16 +89,16 @@ const Tissues = () => {
   };
 
   const getTissueIcon = (type) => {
-    const icons = {
-      'Cornea': '👁️',
-      'Skin Graft': '🧴',
-      'Bone Graft': '🦴',
-      'Heart Valve': '❤️',
-      'Blood Vessel': '🫀',
-      'Tendon': '💪',
-      'Cartilage': '🦵'
+    const iconMap = {
+      'Cornea': <FaEye className="text-blue-500" />,
+      'Skin Graft': <FaHandHoldingMedical className="text-orange-500" />,
+      'Bone Graft': <FaBone className="text-gray-600" />,
+      'Heart Valve': <FaHeartbeat className="text-red-500" />,
+      'Blood Vessel': <FaCircle className="text-red-600" />,
+      'Tendon': <FaDumbbell className="text-purple-500" />,
+      'Cartilage': <FaRunning className="text-teal-500" />
     };
-    return icons[type] || '🧬';
+    return iconMap[type] || <FaDna className="text-life-green-500" />;
   };
 
   const isExpiringSoon = (expiryDate) => {
@@ -128,7 +141,9 @@ const Tissues = () => {
               </p>
               <p className="text-sm text-gray-600 font-semibold mt-2">Ready for use</p>
             </div>
-            <div className="text-5xl opacity-80 animate-float">🧬</div>
+            <div className="text-5xl opacity-80 animate-float text-life-green-500">
+              <FaDna />
+            </div>
           </div>
         </div>
 
@@ -141,7 +156,9 @@ const Tissues = () => {
               </p>
               <p className="text-sm text-gray-600 font-semibold mt-2">Within 90 days</p>
             </div>
-            <div className="text-5xl opacity-80 animate-float" style={{animationDelay: '0.5s'}}>⚠️</div>
+            <div className="text-5xl opacity-80 animate-float text-orange-500" style={{animationDelay: '0.5s'}}>
+              <FaExclamationTriangle />
+            </div>
           </div>
         </div>
 
@@ -154,7 +171,9 @@ const Tissues = () => {
               </p>
               <p className="text-sm text-gray-600 font-semibold mt-2">Highest quality</p>
             </div>
-            <div className="text-5xl opacity-80 animate-float" style={{animationDelay: '1s'}}>⭐</div>
+            <div className="text-5xl opacity-80 animate-float text-yellow-500" style={{animationDelay: '1s'}}>
+              <FaStar />
+            </div>
           </div>
         </div>
       </div>
@@ -174,7 +193,7 @@ const Tissues = () => {
             >
               <option value="">All Tissue Types</option>
               {tissueTypes.map(type => (
-                <option key={type} value={type}>{getTissueIcon(type)} {type}</option>
+                <option key={type} value={type}>{type}</option>
               ))}
             </select>
           </div>
@@ -243,7 +262,7 @@ const Tissues = () => {
                     <td className="px-4 py-3 text-sm font-semibold">{tissue.Tissue_ID}</td>
                     <td className="px-4 py-3">
                       <div className="flex items-center space-x-2">
-                        <span className="text-2xl">{getTissueIcon(tissue.Tissue_Type)}</span>
+                        <span className="text-xl">{getTissueIcon(tissue.Tissue_Type)}</span>
                         <span className="font-semibold text-gray-900">{tissue.Tissue_Type}</span>
                       </div>
                     </td>
@@ -269,7 +288,9 @@ const Tissues = () => {
                           {new Date(tissue.Expiry_Date).toLocaleDateString()}
                         </div>
                         {expiringSoon && tissue.Status === 'Available' && (
-                          <div className="text-xs text-orange-600 font-medium">⚠️ Expiring Soon</div>
+                          <div className="text-xs text-orange-600 font-medium flex items-center gap-1">
+                            <FaExclamationTriangle /> Expiring Soon
+                          </div>
                         )}
                       </div>
                     </td>
@@ -290,7 +311,9 @@ const Tissues = () => {
       {/* Storage Guidelines */}
       <div className="glass-card p-6 bg-life-green-50/30">
         <div className="flex items-start space-x-3">
-          <div className="text-2xl">🧊</div>
+          <div className="text-2xl text-blue-400">
+            <FaSnowflake />
+          </div>
           <div>
             <h3 className="font-bold text-gray-800 mb-2">Tissue Storage & Quality Control</h3>
             <div className="space-y-2 text-sm text-gray-700">

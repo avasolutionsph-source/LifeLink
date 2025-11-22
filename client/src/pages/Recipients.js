@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { mockRecipients, mockHospitals } from '../data/lifelinkMockData';
+import { FaClock, FaCheckCircle, FaExclamationTriangle, FaChartBar } from 'react-icons/fa';
 
 const Recipients = () => {
   const [recipients, setRecipients] = useState([]);
@@ -120,7 +121,9 @@ const Recipients = () => {
               </p>
               <p className="text-sm text-gray-600 font-semibold mt-2">Awaiting match</p>
             </div>
-            <div className="text-5xl opacity-80 animate-float">⏱️</div>
+            <div className="text-5xl opacity-80 animate-float text-life-blue-500">
+              <FaClock />
+            </div>
           </div>
         </div>
 
@@ -133,7 +136,9 @@ const Recipients = () => {
               </p>
               <p className="text-sm text-gray-600 font-semibold mt-2">Ready for surgery</p>
             </div>
-            <div className="text-5xl opacity-80 animate-float" style={{animationDelay: '0.5s'}}>✅</div>
+            <div className="text-5xl opacity-80 animate-float text-green-500" style={{animationDelay: '0.5s'}}>
+              <FaCheckCircle />
+            </div>
           </div>
         </div>
 
@@ -146,7 +151,9 @@ const Recipients = () => {
               </p>
               <p className="text-sm text-gray-600 font-semibold mt-2">Life-threatening</p>
             </div>
-            <div className="text-5xl opacity-80 animate-float" style={{animationDelay: '1s'}}>🚨</div>
+            <div className="text-5xl opacity-80 animate-float text-red-500" style={{animationDelay: '1s'}}>
+              <FaExclamationTriangle />
+            </div>
           </div>
         </div>
       </div>
@@ -299,7 +306,9 @@ const Recipients = () => {
       {/* Priority Scoring Info */}
       <div className="glass-card p-6 bg-life-blue-50/30">
         <div className="flex items-start space-x-3">
-          <div className="text-2xl">📊</div>
+          <div className="text-2xl text-life-blue-600">
+            <FaChartBar />
+          </div>
           <div>
             <h3 className="font-bold text-gray-800 mb-2">Priority Scoring System</h3>
             <div className="space-y-2 text-sm text-gray-700">

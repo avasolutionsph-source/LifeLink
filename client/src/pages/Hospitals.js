@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { mockHospitals, mockInventory, mockDonations, mockRequests } from '../data/mockData';
+import { MdLocalHospital } from 'react-icons/md';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 
 const Hospitals = () => {
   const [hospitals, setHospitals] = useState([]);
@@ -100,23 +102,25 @@ const Hospitals = () => {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center space-x-2">
-                        <span className="text-2xl">🏥</span>
+                        <span className="text-2xl text-life-red-500">
+                          <MdLocalHospital />
+                        </span>
                         <h3 className="text-lg font-bold text-gray-900">
                           {hospital.Hospital_Name}
                         </h3>
                       </div>
                       <div className="mt-2 space-y-1 text-sm text-gray-600">
                         <div className="flex items-center space-x-2">
-                          <span>📍</span>
+                          <FaMapMarkerAlt className="text-gray-500" />
                           <span>{hospital.Address}</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <span>📞</span>
+                          <FaPhone className="text-gray-500" />
                           <span>{hospital.Contact}</span>
                         </div>
                         {hospital.Email && (
                           <div className="flex items-center space-x-2">
-                            <span>✉️</span>
+                            <FaEnvelope className="text-gray-500" />
                             <span>{hospital.Email}</span>
                           </div>
                         )}
@@ -200,7 +204,9 @@ const Hospitals = () => {
           ) : (
             <div className="glass-card p-8">
               <div className="text-center py-12 text-gray-500">
-                <div className="text-4xl mb-4">🏥</div>
+                <div className="text-4xl mb-4 text-life-red-400">
+                  <MdLocalHospital />
+                </div>
                 <p>Select a hospital to view details</p>
               </div>
             </div>
